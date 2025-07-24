@@ -1,0 +1,25 @@
+{
+  "name": "ui-playwright-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciboto/ui-playwright-tests.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ciboto/ui-playwright-tests/issues"
+  },
+  "homepage": "https://github.com/ciboto/ui-playwright-tests#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.1.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0"
+  }
+}
