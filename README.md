@@ -1,6 +1,8 @@
-# Projeto de Testes Automatizados - Integração API + UI com CI/CD
+# <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright Logo" width="40" /> Projeto de Testes Automatizados - Integração API + UI com CI/CD
 
-Este projeto demonstra uma abordagem avançada de testes automatizados, combinando testes de API e UI em uma mesma suíte. A integração perfeita entre chamadas API e interações de interface garante uma cobertura completa dos fluxos de usuário, além de facilitar a manutenção e acelerar a execução dos testes.
+Este projeto apresenta uma abordagem robusta de testes automatizados, unificando testes de API e interface (UI) em uma única suíte. A integração eficiente entre chamadas de API e interações na interface permite validar fluxos completos de usuário com maior velocidade, estabilidade e cobertura.
+
+Utiliza Playwright para testes E2E, estruturado com o padrão Page Object Model (POM), e oferece suporte a setups rápidos via chamadas de API, otimizando o tempo de execução. A automação está integrada ao GitHub Actions, garantindo execução contínua e confiável em pipelines de CI.
 
 ---
 
@@ -22,29 +24,84 @@ Este projeto demonstra uma abordagem avançada de testes automatizados, combinan
   Funções e configuração preparadas para rodar em pipelines de integração contínua, garantindo qualidade constante em múltiplos ambientes.
 
 ---
-
 ## Tecnologias utilizadas
 
-- [Playwright](https://playwright.dev/) - Framework para testes E2E com suporte multi-browser  
-- [pw-api-plugin](https://github.com/sclavijosuero/pw-api-plugin) - Plugin para captura e relatório de chamadas API  
-- [Faker](https://fakerjs.dev/) - Geração de dados falsos realistas para testes  
-- Node.js e TypeScript
-
+- 🎭 [**Playwright**](https://playwright.dev/) — Framework para testes E2E com suporte multi-browser 
+- 🔌 **pw-api-plugin** — Plugin que exibe chamadas HTTP na UI do Playwright, útil para configurar e depurar testes.
+- 🧪 **GitHub Actions** — integração contínua (CI)
+- 💻 **Node.js** — ambiente de execução JavaScript
+- 🧾 TypeScript — Superset do JavaScript que adiciona tipagem estática e outros recursos ao
 ---
+## 📁 Estrutura do Projeto
+```ui-playwright-tests/
+├── .github/
+│   └── workflows/
+│       └── playwright.yml          # Workflow CI para GitHub Actions
+├── helpers/                        # Utilitários e helpers
+├── node_modules/                   # Dependências instaladas pelo npm
+├── pages/                          # Páginas POM organizadas por funcionalidade
+│   └── basePage.ts                 # Classe base para todas as páginas
+├── playwright-report/              # Relatórios gerados pelo Playwright
+├── test-results/                   # Resultados e logs de testes
+├── tests/                          # Casos de testes (API + UI)
+│   ├── api-ui-flows.spec.ts
+│   ├── login.spec.ts
+│   ├── place-order.spec.ts
+│   └── register-account.spec.ts
+├── .gitignore                     # Arquivos e pastas ignorados pelo Git
+├── package.json                   # Dependências e scripts npm
+├── playwright.config.ts           # Configurações do Playwright
+└── README.md                      # Documentação do projeto
+```
+---
+## 🚀 Start
+### Pré-requisitos
 
-## Como rodar os testes localmente
+- Node.js versão 20 ou superior  
+- npm ou yarn  
 
-1. Clone o repositório  
+### Instalação
+1. Clone o repositório
+```bash
+git clone https://github.com/ciboto/api-playwright-tests.git
+cd api-playwright-tests
+```
 2. Instale as dependências:
 ```bash
 npm install
+npx playwright install
 ```
-3. Rode os testes com interface UI e logs API ativados para facilitar debug:
+---
+### Como rodar localmente os testes:
+1. Rode os testes com interface UI e logs API ativados para facilitar debug:
 ```bash
-LOG_API_UI=true LOG_API_REPORT=true npx playwright test --ui   #or 
+LOG_API_UI=true LOG_API_REPORT=true npx playwright test --ui
+#OU
 npm run test:ui
 ```
-4. Para ver o report
+2. Rodar todos os testes no modo headless (sem abrir o navegador):
+```bash
+npx playwright test
+```
+3. Rodar os testes em um navegador específico:
+```bash
+npx playwright test --project=chromium
+npx playwright test --project=firefox
+npx playwright test --project=webkit
+```
+4. Rodar testes por nome do arquivo, describe ou título do teste:
+```bash
+npx playwright test login.spec.ts
+npx playwright test -g "Place Order with Success"
+```
+5. 🏷️ Rodar testes com tag @grep
+Você pode usar tags nos testes (ex: @login, @order, etc.) com a flag --grep:
+```bash
+npx playwright test --grep "@errorLogin"
+```
+
+## 👀 Abrir o relatório de testes
+1. Para ver o report
 ```bash
 npx playwright show-report
 ```
