@@ -87,7 +87,6 @@ npx playwright test
 ```bash
 npx playwright test --project=chromium
 npx playwright test --project=firefox
-npx playwright test --project=webkit
 ```
 4. Rodar testes por nome do arquivo, describe ou título do teste:
 ```bash

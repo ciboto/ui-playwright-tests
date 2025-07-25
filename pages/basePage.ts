@@ -1,11 +1,10 @@
 import { test as base, expect } from '@playwright/test';
-import { HomePage } from '../pages/Home/HomePage';
-import { RegisterPage } from '../pages/RegisterAccount/RegisterPage';
-import { LoginPage } from '../pages/Login/LoginPage';
+import { HomePage } from './Home/HomePage';
+import { RegisterPage } from './RegisterAccount/RegisterPage';
+import { LoginPage } from './Login/LoginPage';
 import { ProductsPage } from './Products/ProductsPage';
 import { CartPage } from './Cart/CartPage';
 import { CheckoutPage } from './Checkout/CheckoutPage';
-import { createFakeUser } from '../helpers/fakeUserData';
 
 export const test = base.extend<{
   homePage: HomePage,
@@ -14,7 +13,6 @@ export const test = base.extend<{
   productPage: ProductsPage,
   cartPage: CartPage,
   checkoutPage: CheckoutPage,
-  fakeUser: ReturnType<typeof createFakeUser>,
 }>({
   // Instancia a homePage antes do teste
   homePage: async ({ page }, use) => {
@@ -39,11 +37,5 @@ export const test = base.extend<{
 
   checkoutPage: async ({ page }, use) => {
     await use(new CheckoutPage(page));
-  },
-
-  
-  fakeUser: async ({}, use) => {
-    const user = createFakeUser();
-    await use(user);
   },
 });
