@@ -5,14 +5,14 @@ import { ProductsPage } from '../pages/Products/ProductsPage';
 import { CartPage } from '../pages/Cart/CartPage';
 import { CheckoutPage } from '../pages/Checkout/CheckoutPage';
 import { TestUser } from '../helpers/types'
-import { getOrCreateUser } from '../helpers/getOrCreateUser'
+import { registerUserViaAPI } from '../helpers/registerUserApi';
 
 let user: TestUser;
 
 test.describe('Place Order Suite', () => {
 
   test.beforeEach(async ({ request, page }) => {
-    user = await getOrCreateUser({ request, page });
+    user = await registerUserViaAPI({ request, page });
     const login = new LoginPage(page);
     const home = new HomePage(page)
     await login.Login(user.email, user.password);

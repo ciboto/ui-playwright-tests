@@ -5,5 +5,8 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-
+dist/
 package-lock.json
+
+# Ignorar o usuário gerado
+helpers/Data/user.json

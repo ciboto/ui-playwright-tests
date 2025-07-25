@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { getOrCreateUser } from '../helpers/getOrCreateUser'
+import { registerUserViaAPI } from '../helpers/registerUserApi';
 import { LoginPage } from '../pages/Login/LoginPage'
 import { TestUser } from '../helpers/types'
 
@@ -7,7 +7,7 @@ let user: TestUser;
 
 test.describe('Login Account Suite', () => {
   test.beforeEach(async ({ request, page }) => {
-    user = await getOrCreateUser({ request, page });
+     user = await registerUserViaAPI({ request, page });
   })
 
 
@@ -20,8 +20,7 @@ test.describe('Login Account Suite', () => {
 
   test('Login With Wrong Credentials @errorLogin', async ({ page }) => {
     const login = new LoginPage(page);
-    await login.Login('email_nao_existente@mail.com', '12345')
-    await login.ValidadeErrorLogin()
+    await login.LoginError('email_nao_existente@mail.com', '12345')
   })
 
   test('Logout With Sucess @logout', async ({ page }) => {
