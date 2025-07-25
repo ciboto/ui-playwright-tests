@@ -20,4 +20,9 @@ export class LoginPage {
     async ValidateUserLogged(fullName: string) {
         await expect(this.page.getByText(`Logged in as ${fullName}`)).toBeVisible();
     }
+
+    async Logout() {
+        await this.page.getByRole('link', { name: HomeLocators.logoutBtn}).click()
+        await expect (this.page.getByRole('link', { name: HomeLocators.signupOrLoginBtn})).toBeVisible()
+    }
 }

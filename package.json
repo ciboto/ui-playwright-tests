@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:ui": "LOG_API_UI=true LOG_API_REPORT=true npx playwright test --ui",
+    "test:ci": "LOG_API_REPORT=true npx playwright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ciboto/ui-playwright-tests.git"
@@ -17,7 +20,8 @@
   "homepage": "https://github.com/ciboto/ui-playwright-tests#readme",
   "devDependencies": {
     "@playwright/test": "^1.54.1",
-    "@types/node": "^24.1.0"
+    "@types/node": "^24.1.0",
+    "pw-api-plugin": "^2.0.2"
   },
   "dependencies": {
     "@faker-js/faker": "^9.9.0"

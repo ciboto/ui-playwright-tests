@@ -1,5 +1,3 @@
-import { title } from "process";
-
 export const CheckoutLocators = {
   bntProceedCheckout: 'Proceed To Checkout',
   titleAdressInfos : 'Address Details',

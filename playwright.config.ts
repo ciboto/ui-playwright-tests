@@ -9,7 +9,7 @@ export default defineConfig({
   use: {
     baseURL: 'https://automationexercise.com/',
     trace: 'on-first-retry',
-    screenshot: 'only-on-failure'
+    screenshot: 'only-on-failure',
   },
 
   projects: [

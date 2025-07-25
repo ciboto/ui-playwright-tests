@@ -1,11 +1,14 @@
-import { request } from '@playwright/test';
+import { pwApi } from 'pw-api-plugin';
 import { faker } from '@faker-js/faker';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import path from 'path';
+import { APIRequestContext, Page } from '@playwright/test';
 
 const userPath = path.resolve(__dirname, 'Data/user.json');
 
-export async function registerUserViaAPI() {
+export async function registerUserViaAPI(context: { request: APIRequestContext, page: Page }) {
+  const { request, page } = context;
+
   const user = {
     name: faker.person.fullName(),
     email: faker.internet.email(),
@@ -24,15 +27,13 @@ export async function registerUserViaAPI() {
     state: faker.location.state(),
     city: faker.location.city(),
     mobile_number: faker.phone.number(),
-    fullName: '' // adiciona fullName
+    fullName: '' // preenchido abaixo
   };
 
   user.fullName = `${user.firstname} ${user.lastname}`;
 
-  const requestContext = await request.newContext();
-
-  const response = await requestContext.post('https://automationexercise.com/api/createAccount', {
-    form: user,
+  const response = await pwApi.post({ request, page }, `/api/createAccount`, {
+    form: user
   });
 
   const body = await response.json();

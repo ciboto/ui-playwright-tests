@@ -1,5 +1,5 @@
-import { faker } from '@faker-js/faker';
-
+import { fakerPT_BR } from '@faker-js/faker';
+const faker = fakerPT_BR;
 
 export function createFakeUser() {
   const firstName = faker.person.firstName();
