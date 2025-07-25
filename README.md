@@ -41,7 +41,8 @@ npm install
 ```
 3. Rode os testes com interface UI e logs API ativados para facilitar debug:
 ```bash
-LOG_API_UI=true LOG_API_REPORT=true npx playwright test --ui
+LOG_API_UI=true LOG_API_REPORT=true npx playwright test --ui   #or 
+npm run test:ui
 ```
 4. Para ver o report
 ```bash
@@ -84,7 +85,6 @@ jobs:
 
       - name: Run Playwright tests
         env:
-          LOG_API_UI: 'true'       # ativa painel de logs API no UI
           LOG_API_REPORT: 'true'   # ativa geração de relatório detalhado
         run: npx playwright test
 
