@@ -1,4 +1,6 @@
 # <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright Logo" width="40" /> Projeto de Testes Automatizados - Integração API + UI com CI/CD
+![License](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey?style=for-the-badge)
+![Playwright UI](https://img.shields.io/badge/Playwright_UI-Tested-blueviolet?logo=playwright&logoColor=white&style=for-the-badge)
 
 Este projeto apresenta uma abordagem robusta de testes automatizados, unificando testes de API e interface (UI) em uma única suíte. A integração eficiente entre chamadas de API e interações na interface permite validar fluxos completos de usuário com maior velocidade, estabilidade e cobertura.
 
@@ -151,3 +153,6 @@ jobs:
           name: playwright-report
           path: playwright-report/
 ```
+---
+## ⚖️ Licença
+Este projeto está licenciado sob a [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) - Consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
